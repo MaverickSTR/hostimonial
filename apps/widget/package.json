@@ -1,5 +1,5 @@
 {
-  "name": "@staywall/widget",
+  "name": "@aggregator/widget",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -20,7 +20,7 @@
     "typescript": "^5.7.0",
     "size-limit": "^11.1.0",
     "@size-limit/file": "^11.1.0",
-    "@staywall/config": "workspace:*"
+    "@aggregator/config": "workspace:*"
   },
   "size-limit": [
     {

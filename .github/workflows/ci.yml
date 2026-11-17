@@ -13,4 +13,4 @@ jobs:
       - run: pnpm typecheck
       - run: pnpm test
       - run: pnpm build
-      - run: pnpm --filter @staywall/widget size
+      - run: pnpm --filter @aggregator/widget size

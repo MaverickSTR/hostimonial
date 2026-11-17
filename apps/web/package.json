@@ -1,5 +1,5 @@
 {
-  "name": "@staywall/web",
+  "name": "@aggregator/web",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -14,8 +14,8 @@
     "next": "^15.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "@staywall/core": "workspace:*",
-    "@staywall/db": "workspace:*",
+    "@aggregator/core": "workspace:*",
+    "@aggregator/db": "workspace:*",
     "inngest": "^3.30.0"
   },
   "devDependencies": {
@@ -23,6 +23,6 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@types/node": "^22.0.0",
-    "@staywall/config": "workspace:*"
+    "@aggregator/config": "workspace:*"
   }
 }

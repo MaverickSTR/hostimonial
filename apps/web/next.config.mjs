@@ -1,1 +1,1 @@
-export default { transpilePackages: ["@staywall/core", "@staywall/db"] };
+export default { transpilePackages: ["@aggregator/core", "@aggregator/db"] };

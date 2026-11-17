@@ -1,5 +1,5 @@
 {
-  "name": "@staywall/core",
+  "name": "@aggregator/core",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -16,6 +16,6 @@
   "devDependencies": {
     "vitest": "^3.0.0",
     "typescript": "^5.7.0",
-    "@staywall/config": "workspace:*"
+    "@aggregator/config": "workspace:*"
   }
 }

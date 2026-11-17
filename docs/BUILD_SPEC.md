@@ -2,7 +2,7 @@
 
 > **For Claude Code.** This is the build spec for an MVP SaaS. Work **one milestone at a time** (Section 14). Don't start a milestone until the previous one's acceptance criteria pass. Items marked **⚠ VERIFY** are external facts or API details you must confirm against the live docs (or with the owner) before relying on them. Don't invent API fields. If a doc contradicts this spec, the doc wins: note the difference in `docs/DECISIONS.md` and carry on.
 >
-> Owner: Chase Gillmore, Maverick STR (chase@maverickstr.co). Working product name: **`staywall`** (placeholder; keep it in one config constant `APP_NAME` so it can be renamed).
+> Owner: Chase Gillmore, Maverick STR (chase@maverickstr.co). Product name: **AggreGator** (`aggregator`) (placeholder; keep it in one config constant `APP_NAME` so it can be renamed).
 
 ---
 
@@ -53,7 +53,7 @@ Rejected for MVP: a separate API server (Next route handlers are enough), Kafka/
 ## 3. Repo structure
 
 ```
-staywall/
+aggregator/
 ├─ apps/
 │  ├─ web/                      # Next.js dashboard + API (app router)
 │  │  ├─ app/
@@ -77,7 +77,7 @@ staywall/
 │  ├─ core/                     # shared types, zod schemas, normalization, matching
 │  ├─ connectors/               # hostaway/, guesty/, google/, csv/, direct/ (+ ownerrez/, hospitable/ stubs)
 │  └─ config/                   # eslint, tsconfig, tailwind preset
-├─ plugins/wordpress/staywall-reviews/   # PHP plugin
+├─ plugins/wordpress/aggregator-reviews/   # PHP plugin
 ├─ docs/ (DECISIONS.md, API.md, EMBED.md, CONNECTORS.md, RUNBOOK.md)
 └─ turbo.json, pnpm-workspace.yaml, .env.example
 ```
@@ -372,16 +372,16 @@ MVP UI strings are English only. Ship the i18n framework with `en` complete and 
 
 ### 7.3 Embed: one script, data attributes
 ```html
-<script src="https://cdn.staywall.app/w.js" async></script>
-<div data-staywall="w_8k2Jd9"></div>
+<script src="https://cdn.aggregator.app/w.js" async></script>
+<div data-aggregator="w_8k2Jd9"></div>
 <!-- per-property override on a template page -->
-<div data-staywall="w_8k2Jd9" data-property="sea-breeze-cottage"></div>
+<div data-aggregator="w_8k2Jd9" data-property="sea-breeze-cottage"></div>
 <!-- floating widget: no container needed -->
-<script src="https://cdn.staywall.app/w.js" data-staywall-floating="w_Fl0at1" async></script>
+<script src="https://cdn.aggregator.app/w.js" data-aggregator-floating="w_Fl0at1" async></script>
 ```
-- The loader finds all `[data-staywall]` nodes (plus a MutationObserver for SPA builders like Webflow interactions/Wix). For each node: attach a Shadow root, lazy-render when within 200 px of the viewport (IntersectionObserver), fetch the snapshot.
+- The loader finds all `[data-aggregator]` nodes (plus a MutationObserver for SPA builders like Webflow interactions/Wix). For each node: attach a Shadow root, lazy-render when within 200 px of the viewport (IntersectionObserver), fetch the snapshot.
 - **Scope `auto`:** property resolved in this order: `data-property` (slug or id) → `property_url_rules` match on `location.pathname` (rules are included in the workspace snapshot) → fall back to portfolio. This solves PMS site builders that allow only **one script** for the whole site.
-- `window.Staywall.refresh()` API for SPAs.
+- `window.AggreGator.refresh()` API for SPAs.
 - **Never throw into the host page:** wrap everything in try/catch, render nothing on failure, and report to a sampled error beacon.
 
 ### 7.4 Performance budget (CI-enforced with `size-limit`)
@@ -410,13 +410,13 @@ Therefore:
   - `@type` = configured type (`VacationRental` default) + `name` + `url` (canonical page),
   - `aggregateRating { ratingValue, reviewCount, bestRating: 5, worstRating: 1 }` computed **only from reviews whose text is rendered on that page** (exclude `text_restricted`), and
   - optionally up to 10 `review` items **that are visibly rendered** (author, datePublished, reviewRating, reviewBody).
-- **Never** use `Product` or another type to farm stars. Never mark up reviews that aren't visible. Never emit markup for portfolio widgets. Don't emit if a page already has the widget's JSON-LD (dedupe by `data-staywall-ld` id).
+- **Never** use `Product` or another type to farm stars. Never mark up reviews that aren't visible. Never emit markup for portfolio widgets. Don't emit if a page already has the widget's JSON-LD (dedupe by `data-aggregator-ld` id).
 - `ssrFallback`: the WordPress plugin can server-render the first 5 reviews as plain HTML (from the snapshot via PHP fetch + transient cache) so text is crawlable without JS. Webflow/Wix/Squarespace get JS-only in MVP.
 - Acceptance: the Rich Results Test / schema.org validator shows no errors on a fixture page (manual check, documented in RUNBOOK).
 
 ### 7.7 Platform embed notes (write in `docs/EMBED.md` + in-app copy)
-- **WordPress:** plugin `staywall-reviews` (WP 6.0+, PHP 7.4+): settings page (paste widget IDs), shortcode `[staywall id="w_x" property="slug"]`, Gutenberg block, enqueue `w.js` once with `async`, optional SSR fallback. Also document "Custom HTML block" for no-plugin installs. Elementor: HTML widget.
-- **Webflow:** site settings → custom code (footer) for the script; Embed element for `<div data-staywall>`; on CMS property templates bind `data-property` to the CMS slug field.
+- **WordPress:** plugin `aggregator-reviews` (WP 6.0+, PHP 7.4+): settings page (paste widget IDs), shortcode `[aggregator id="w_x" property="slug"]`, Gutenberg block, enqueue `w.js` once with `async`, optional SSR fallback. Also document "Custom HTML block" for no-plugin installs. Elementor: HTML widget.
+- **Webflow:** site settings → custom code (footer) for the script; Embed element for `<div data-aggregator>`; on CMS property templates bind `data-property` to the CMS slug field.
 - **Wix:** Settings → Custom Code (body end, all pages) for the script; "Embed HTML" element renders in an iframe, so the div must include the script inside that embed (document both; MutationObserver handles late inserts). ⚠ VERIFY current Wix iframe behavior while testing.
 - **Squarespace:** Code Injection (footer) for the script (Business plan+ ⚠ VERIFY); Code Block for the div.
 - **Hostaway / Guesty / Lodgify / Boostly booking sites:** paste the script in the site's head/footer script setting; use one `auto`-scope widget + URL rules when the builder allows only one script. Document the exact menu paths only after testing each one (⚠ VERIFY).

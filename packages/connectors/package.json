@@ -1,5 +1,5 @@
 {
-  "name": "@staywall/connectors",
+  "name": "@aggregator/connectors",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -11,10 +11,10 @@
     "test": "echo ok"
   },
   "dependencies": {
-    "@staywall/core": "workspace:*"
+    "@aggregator/core": "workspace:*"
   },
   "devDependencies": {
     "typescript": "^5.7.0",
-    "@staywall/config": "workspace:*"
+    "@aggregator/config": "workspace:*"
   }
 }

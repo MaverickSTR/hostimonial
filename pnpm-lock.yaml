@@ -17,10 +17,10 @@ importers:
 
   apps/web:
     dependencies:
-      '@staywall/core':
+      '@aggregator/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@staywall/db':
+      '@aggregator/db':
         specifier: workspace:*
         version: link:../../packages/db
       inngest:
@@ -36,7 +36,7 @@ importers:
         specifier: ^19.0.0
         version: 19.3.1(react@19.3.1)
     devDependencies:
-      '@staywall/config':
+      '@aggregator/config':
         specifier: workspace:*
         version: link:../../packages/config
       '@types/node':
@@ -58,15 +58,15 @@ importers:
         specifier: ^10.25.0
         version: 10.29.8
     devDependencies:
+      '@aggregator/config':
+        specifier: workspace:*
+        version: link:../../packages/config
       '@preact/preset-vite':
         specifier: ^2.9.0
         version: 2.10.6(@babel/core@7.29.13)(preact@10.29.8)(rollup@4.68.5)(vite@6.4.6(@types/node@22.20.5)(jiti@2.7.0)(yaml@2.9.1))
       '@size-limit/file':
         specifier: ^11.1.0
         version: 11.2.0(size-limit@11.2.0)
-      '@staywall/config':
-        specifier: workspace:*
-        version: link:../../packages/config
       size-limit:
         specifier: ^11.1.0
         version: 11.2.0
@@ -81,11 +81,11 @@ importers:
 
   packages/connectors:
     dependencies:
-      '@staywall/core':
+      '@aggregator/core':
         specifier: workspace:*
         version: link:../core
     devDependencies:
-      '@staywall/config':
+      '@aggregator/config':
         specifier: workspace:*
         version: link:../config
       typescript:
@@ -98,7 +98,7 @@ importers:
         specifier: ^3.24.0
         version: 3.25.76
     devDependencies:
-      '@staywall/config':
+      '@aggregator/config':
         specifier: workspace:*
         version: link:../config
       typescript:
@@ -117,7 +117,7 @@ importers:
         specifier: ^3.4.5
         version: 3.4.9
     devDependencies:
-      '@staywall/config':
+      '@aggregator/config':
         specifier: workspace:*
         version: link:../config
       '@types/node':
@@ -2046,8 +2046,8 @@ packages:
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
-  electron-to-chromium@1.5.487:
-    resolution: {integrity: sha512-qWotOhQYeYEj+DK4+Y+cfPj44qiC6ETIiWtJLfmDJydED2BJJ7loPA4SfBbbrMI6X/X3tryJgxnY9nxsO545Zw==}
+  electron-to-chromium@1.5.488:
+    resolution: {integrity: sha512-Uox8y5IeRGB/uXNMNSPfWaiI5/8d/2XG125oc+f2C5JniHcoMxsbCXcVFRZnIsdrgPwZQ6/k5SbSxhBirqQPuA==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -4455,7 +4455,7 @@ snapshots:
     dependencies:
       baseline-browser-mapping: 2.11.38
       caniuse-lite: 1.0.30001826
-      electron-to-chromium: 1.5.487
+      electron-to-chromium: 1.5.488
       node-releases: 2.0.65
       update-browserslist-db: 1.4.0(browserslist@4.29.6)
 
@@ -4581,7 +4581,7 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  electron-to-chromium@1.5.487: {}
+  electron-to-chromium@1.5.488: {}
 
   emoji-regex@8.0.0: {}
 

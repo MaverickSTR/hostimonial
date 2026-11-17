@@ -1,1 +1,1 @@
-{ "extends": "@staywall/config/tsconfig.base.json", "include": ["src"] }
+{ "extends": "@aggregator/config/tsconfig.base.json", "include": ["src"] }

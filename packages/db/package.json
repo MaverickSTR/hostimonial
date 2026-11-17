@@ -1,5 +1,5 @@
 {
-  "name": "@staywall/db",
+  "name": "@aggregator/db",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -17,7 +17,7 @@
   "devDependencies": {
     "drizzle-kit": "^0.30.0",
     "typescript": "^5.7.0",
-    "@staywall/config": "workspace:*",
+    "@aggregator/config": "workspace:*",
     "@types/node": "^22.0.0"
   }
 }

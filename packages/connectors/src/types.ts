@@ -1,4 +1,4 @@
-import type { Provider } from "@staywall/core";
+import type { Provider } from "@aggregator/core";
 // Interface from spec §5.0. Shapes are refined per connector in M4+ (no invented API fields).
 export interface ConnCtx { connectionId: string; orgId: string; credentials: unknown }
 export type ExternalListingInput = { externalId: string; name: string; raw: unknown };
