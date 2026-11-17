@@ -1,0 +1,32 @@
+{
+  "name": "@staywall/widget",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "typecheck": "tsc -p .",
+    "lint": "tsc -p .",
+    "test": "echo ok",
+    "size": "size-limit"
+  },
+  "dependencies": {
+    "preact": "^10.25.0"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0",
+    "@preact/preset-vite": "^2.9.0",
+    "typescript": "^5.7.0",
+    "size-limit": "^11.1.0",
+    "@size-limit/file": "^11.1.0",
+    "@staywall/config": "workspace:*"
+  },
+  "size-limit": [
+    {
+      "path": "dist/w.js",
+      "limit": "30 KB",
+      "gzip": true
+    }
+  ]
+}
