@@ -11,18 +11,21 @@
     "test": "echo ok"
   },
   "dependencies": {
-    "next": "^15.1.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
     "@aggregator/core": "workspace:*",
     "@aggregator/db": "workspace:*",
-    "inngest": "^3.30.0"
+    "inngest": "^3.30.0",
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "typescript": "^5.7.0",
+    "@aggregator/config": "workspace:*",
+    "@tailwindcss/postcss": "^4.3.5",
+    "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "@types/node": "^22.0.0",
-    "@aggregator/config": "workspace:*"
+    "postcss": "^8.5.33",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^5.7.0"
   }
 }

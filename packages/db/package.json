@@ -8,7 +8,8 @@
   "scripts": {
     "typecheck": "tsc -p .",
     "lint": "tsc -p .",
-    "test": "echo ok"
+    "test": "vitest run",
+    "migrate": "tsx src/migrate.ts"
   },
   "dependencies": {
     "drizzle-orm": "^0.38.0",
@@ -18,6 +19,8 @@
     "drizzle-kit": "^0.30.0",
     "typescript": "^5.7.0",
     "@aggregator/config": "workspace:*",
-    "@types/node": "^22.0.0"
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "vitest": "^3.0.0"
   }
 }

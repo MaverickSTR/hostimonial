@@ -5,3 +5,11 @@ Review aggregation tools for short-term rentals: pull guest reviews from PMSs, G
 pnpm install
 pnpm dev
 ```
+
+## Local database
+```bash
+scripts/dev-db.sh start        # Postgres 16 on :54322 with Supabase-compatible shims
+export DATABASE_URL=postgresql://postgres:postgres@127.0.0.1:54322/postgres
+pnpm --filter @aggregator/db migrate
+pnpm test
+```

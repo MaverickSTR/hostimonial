@@ -6,3 +6,8 @@ dist
 .env.local
 *.tsbuildinfo
 .DS_Store
+
+# stray tsc emit
+apps/*/src/**/*.js
+packages/*/src/**/*.js
+packages/*/drizzle.config.js
